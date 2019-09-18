@@ -2,74 +2,90 @@ package lesson11.streams.reference.maven;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
-abstract class CitySectors implements CitySet{
-    private String name;
-    private int length;
-    private int width;
-    private Set<Damage> damage;
+abstract class CitySectors implements CitySet {
 
-    CitySectors(String name, int length, int width) {
-        this.name = name;
-        this.length = length;
-        this.width = width;
-        this.damage = new HashSet<>();
+    private String sectorName;
+    private final UUID sectorID;
+    private int sectorLength;
+    private int sectorWidth;
+    private Set<Damage> sectorDamages;
+
+    CitySectors(String sectorName, UUID sectorID, int sectorLength, int sectorWidth) {
+        this.sectorName = sectorName;
+        this.sectorID = sectorID;
+        this.sectorLength = sectorLength;
+        this.sectorWidth = sectorWidth;
+        this.sectorDamages = new HashSet<>();
     }
 
     @Override
-    public String getName() {
-        return name;
+    public String getSectorName() {
+        return sectorName;
     }
-    @Override
-    public int getLength() {
-        return length;
-    }
-    @Override
-    public int getWidth() {
-        return width;
-    }
-    @Override
-    public Set<Damage> getDamage() {
 
-        return damage;
-    }
     @Override
-    public void addDamage(int length, int width){
-        damage.add(new Damage(length,width));
+    public UUID getSectorID(){return  sectorID;}
+
+    @Override
+    public int getSectorLength() {
+        return sectorLength;
+    }
+
+    @Override
+    public int getSectorWidth() {
+        return sectorWidth;
+    }
+
+    @Override
+    public Set<Damage> getSectorDamages() {
+
+        return sectorDamages;
+    }
+
+    @Override
+    public void addDamage(UUID damageID, int damageLength, int damageWidth) {
+        sectorDamages.add(new Damage(damageID, damageLength,damageWidth));
     }
 }
 
 class Park extends CitySectors {
-    Park(String name, int length, int width) {
-        super(name, length, width);
+    Park(String name, UUID id, int length, int width) {
+        super(name, id, length, width);
     }
 }
 
 class Street extends CitySectors {
-    Street(String name, int length, int width) {
-        super(name, length, width);
+    Street(String name, UUID id, int length, int width) {
+        super(name, id, length, width);
     }
 }
 
 class LivingDistrict extends CitySectors {
-    LivingDistrict(String name, int length, int width) {
-        super(name, length, width);
+    LivingDistrict(String name, UUID id, int length, int width) {
+        super(name, id, length, width);
     }
 }
 
-class Damage{
-    private int length;
-    private int width;
+class Damage {
+    private final UUID damageID;
+    private int damageLength;
+    private int damageWidth;
 
-    Damage(int length, int width) {
-        this.length = length;
-        this.width = width;
+    Damage(UUID damageID, int damageLength, int damageWidth) {
+        this.damageID = damageID;
+        this.damageLength = damageLength;
+        this.damageWidth = damageWidth;
     }
 
-    public int getLength() {
-        return length;
+    UUID getDamageID() {
+        return damageID;
     }
-    int getWidth() {
-        return width;
+    int getDamageLength() {
+        return damageLength;
+    }
+    int getDamageWidth() {
+        return damageWidth;
     }
 }

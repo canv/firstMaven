@@ -2,40 +2,47 @@ package lesson11.streams.reference.maven;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 class City{
-    private Set<Park> parks;
-    private Set<Street> streets;
-    private Set<LivingDistrict> livingDistricts;
+    private String cityName;
+    private Set<Park> cityParks;
+    private Set<Street> cityStreets;
+    private Set<LivingDistrict> cityDistricts;
 
     City() {
-        this.parks = new HashSet<>();
-        this.streets = new HashSet<>();
-        this.livingDistricts = new HashSet<>();
+        this.cityName = "none";
+        this.cityParks = new HashSet<>();
+        this.cityStreets = new HashSet<>();
+        this.cityDistricts = new HashSet<>();
     }
 
-    Set<Park> getParks() {
-        return parks;
+    String getCityName() {
+        return cityName;
     }
-    Set<Street> getStreets() {
-        return streets;
+    Set<Park> getCityParks() {
+        return cityParks;
     }
-    Set<LivingDistrict> getLivingDistricts() {
-        return livingDistricts;
+    Set<Street> getCityStreets() {
+        return cityStreets;
+    }
+    Set<LivingDistrict> getCityDistricts() {
+        return cityDistricts;
     }
 
     void addSector(Park park){
-        parks.add(park);
+        cityParks.add(park);
     }
     void addSector(Street street){
-        streets.add(street);
+        cityStreets.add(street);
     }
     void addSector(LivingDistrict livingDistrict){
-        livingDistricts.add(livingDistrict);
+        cityDistricts.add(livingDistrict);
     }
-    static void addDamage(Set<? extends CitySet> points, String name, int length, int width){
+
+    static void addDamage(Set<? extends CitySet> points, String sectorName, UUID id, int length, int width){
         for (CitySet point : points) {
-            if (name.equals(point.getName())) point.addDamage(length,width);
+            if (sectorName.equals(point.getSectorName())) point.addDamage(id,length,width);
         }
     }
 }
