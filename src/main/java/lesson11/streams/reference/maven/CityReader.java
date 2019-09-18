@@ -3,8 +3,18 @@ package lesson11.streams.reference.maven;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class CityReader {
+    public static void main(String[] args) {
+        City city17 = new City();
+        CityReader cityFile = new CityReader(Lesson11.fileAddress2());
+        cityFile.loader(city17);
+
+
+    }
     private String cityFileAddress;
 
     CityReader(String cityFileAddress) {
@@ -15,6 +25,7 @@ class CityReader {
 
     private String foundSector = "";
     private String foundName = "";
+    private String foundID = "";
     private String foundLength = "";
     private String foundWidth = "";
     private int intLength = 0;
@@ -24,21 +35,29 @@ class CityReader {
         try (BufferedReader bfCityReader = new BufferedReader
                 (new FileReader(cityFileAddress))) {
 
-            do {
-                if (!sectorFinder(bfCityReader)) continue;
-                nameReader(bfCityReader);
-                lengthReader(bfCityReader);
-                widthReader(bfCityReader);
-                addSector(cityObj);
+            List<String> yy = bfCityReader.lines()
+                    .filter(line -> line.endsWith(","))
+                    .collect(Collectors.toList());
 
-                do{
-                    if(!damageFinder(bfCityReader))continue;
-                    lengthReader(bfCityReader);
-                    widthReader(bfCityReader);
-                    addDamage(cityObj);
-                }while (readCondition != '-');
-                namesReset();
-            } while (readCondition != -1);
+            System.out.println(yy.get(9));
+
+
+
+//            do {
+//                if (!sectorFinder(bfCityReader)) continue;
+//                nameReader(bfCityReader);
+//                lengthReader(bfCityReader);
+//                widthReader(bfCityReader);
+//                addSector(cityObj);
+//
+//                do{
+//                    if(!damageFinder(bfCityReader))continue;
+//                    lengthReader(bfCityReader);
+//                    widthReader(bfCityReader);
+//                    addDamage(cityObj);
+//                }while (readCondition != '-');
+//                namesReset();
+//            } while (readCondition != -1);
 
         } catch (IOException exc) {
             System.out.println("File access error!");
@@ -99,52 +118,52 @@ class CityReader {
         intWidth = Integer.parseInt(foundWidth);
     }
 
-    private void addSector(City cityObj) {
-        switch (foundSector) {
-            case "Park":
-                cityObj.addSector(new Park(foundName, intLength, intWidth));
-                successAddReport(foundSector);
-                sizesReset();
-                break;
-
-            case "Street":
-                cityObj.addSector(new Street(foundName, intLength, intWidth));
-                successAddReport(foundSector);
-                sizesReset();
-                break;
-
-            case "LivingDistrict":
-                cityObj.addSector(new LivingDistrict(foundName, intLength, intWidth));
-                successAddReport(foundSector);
-                sizesReset();
-                break;
-            default:
-                System.out.println("Sector not found!");
-        }
-    }
-    private void addDamage(City cityObj) {
-        switch (foundSector) {
-            case "Park":
-                City.addDamage(cityObj.getParks(),foundName,intLength,intWidth);
-                successAddReport("Damage in "+foundSector);
-                sizesReset();
-                break;
-
-            case "Street":
-                City.addDamage(cityObj.getStreets(),foundName,intLength,intWidth);
-                successAddReport("Damage in "+foundSector);
-                sizesReset();
-                break;
-
-            case "LivingDistrict":
-                City.addDamage(cityObj.getLivingDistricts(),foundName,intLength,intWidth);
-                successAddReport("Damage in "+foundSector);
-                sizesReset();
-                break;
-            default:
-                System.out.println("Sector not found!");
-        }
-    }
+//    private void addSector(City cityObj) {
+//        switch (foundSector) {
+//            case "Park":
+//                cityObj.addSector(new Park(foundName, intLength, intWidth));
+//                successAddReport(foundSector);
+//                sizesReset();
+//                break;
+//
+//            case "Street":
+//                cityObj.addSector(new Street(foundName, intLength, intWidth));
+//                successAddReport(foundSector);
+//                sizesReset();
+//                break;
+//
+//            case "LivingDistrict":
+//                cityObj.addSector(new LivingDistrict(foundName, intLength, intWidth));
+//                successAddReport(foundSector);
+//                sizesReset();
+//                break;
+//            default:
+//                System.out.println("Sector not found!");
+//        }
+//    }
+//    private void addDamage(City cityObj) {
+//        switch (foundSector) {
+//            case "Park":
+//                City.addDamage(cityObj.getCityParks(),foundName,intLength,intWidth);
+//                successAddReport("Damage in "+foundSector);
+//                sizesReset();
+//                break;
+//
+//            case "Street":
+//                City.addDamage(cityObj.getCityStreets(),foundName,intLength,intWidth);
+//                successAddReport("Damage in "+foundSector);
+//                sizesReset();
+//                break;
+//
+//            case "LivingDistrict":
+//                City.addDamage(cityObj.getCityDistricts(),foundName,intLength,intWidth);
+//                successAddReport("Damage in "+foundSector);
+//                sizesReset();
+//                break;
+//            default:
+//                System.out.println("Sector not found!");
+//        }
+//    }
 
     private void sizesReset(){
         foundLength = "";
@@ -155,6 +174,7 @@ class CityReader {
     private void namesReset(){
         foundSector = "";
         foundName = "";
+        foundID = "";
         System.out.println();
     }
 

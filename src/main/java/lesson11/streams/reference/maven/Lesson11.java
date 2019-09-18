@@ -12,15 +12,15 @@ public class Lesson11 {
         cityFile.loader(city17);
 
         System.out.println("Total area of all city parks - " +
-                totalSectorArea(city17.getParks()) +
+                totalSectorArea(city17.getCityParks()) +
                 "\nTotal area of all city streets - " +
-                totalSectorArea(city17.getStreets()) + "" +
+                totalSectorArea(city17.getCityStreets()) + "" +
                 "\nTotal area of all living districts - " +
-                totalSectorArea(city17.getLivingDistricts()) +
+                totalSectorArea(city17.getCityDistricts()) +
                 "\nTotal length of all streets - " +
-                streetsLength(city17.getStreets()) +
+                streetsLength(city17.getCityStreets()) +
                 "\nTotal area of damaged roads - " +
-                totalSectorDamageArea(city17.getParks()) +
+                totalSectorDamageArea(city17.getCityParks()) +
                 "\nTotal usable area of all coverage of the city - " +
                 totalUsableArea(city17) + "\n");
     }
@@ -29,5 +29,11 @@ public class Lesson11 {
         return "C:\\Users\\Admin\\IdeaProjects" +
                 "\\firstMaven\\src\\main\\java\\lesson11" +
                 "\\streams\\reference\\maven\\city17.txt";
+    }
+
+    static String fileAddress2() {
+        return "C:\\Users\\Admin\\IdeaProjects" +
+                "\\firstMaven\\src\\main\\java\\lesson11" +
+                "\\streams\\reference\\maven\\city18.txt";
     }
 }

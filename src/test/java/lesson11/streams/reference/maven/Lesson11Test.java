@@ -19,24 +19,13 @@ public class Lesson11Test {
     }
 
     @Test
-    public void nonFileBuildTest(){
+    public void isItWork(){
         City city17 = new City();
+        CityReader cityFile = new CityReader(Lesson11.fileAddress2());
+        cityFile.loader(city17);
 
-        city17.addSector(new Park("May", 123, 221));
-        addDamage(city17.getParks(), "May", 5, 2);
 
-        city17.addSector(new Street("Cosmonauts", 3234, 700));
-        addDamage(city17.getStreets(), "Cosmonauts", 2034, 56);
 
-        city17.addSector(new LivingDistrict("GGR7", 664, 600));
-        addDamage(city17.getLivingDistricts(), "GGR7", 3, 77);
-        addDamage(city17.getLivingDistricts(), "GGR7", 34, 43);
-
-        assertThat(totalSectorArea(city17.getParks()),is(27183));
-        assertThat(totalSectorArea(city17.getStreets()),is(2263800));
-        assertThat(totalSectorArea(city17.getLivingDistricts()),is(398400));
-        assertThat(streetsLength(city17.getStreets()),is(3234));
-        assertThat(totalSectorDamageArea(city17.getParks()),is(10));
-        assertThat(totalUsableArea(city17),is(2573776));
     }
+
 }
