@@ -62,8 +62,8 @@ class Street extends CitySectors {
     }
 }
 
-class LivingDistrict extends CitySectors {
-    LivingDistrict(String name, UUID id, int length, int width) {
+class District extends CitySectors {
+    District(String name, UUID id, int length, int width) {
         super(name, id, length, width);
     }
 }
