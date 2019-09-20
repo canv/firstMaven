@@ -11,10 +11,10 @@ public class Lesson11Test {
 
     @Test
     public void isActualFileAddressTest(){
+        File testFile = new File(CitiesReaderTest.testFileAddress());
+        assertThat((testFile.isFile() && !testFile.isDirectory()),is(true));
+
         File file = new File(Lesson11.fileAddress());
         assertThat((file.isFile() && !file.isDirectory()),is(true));
-
     }
-
-
 }

@@ -5,6 +5,9 @@ import static lesson11.streams.reference.maven.CityCalculation.*;
 public class Lesson11 {
     public static void main(String[] args) {
 // 1) Сделать получение всех данных для города из текстового файла на диске
+//      - прочитать данные из файла при прмощи ScreamAPI
+//      - добавить зависимости apache, junit4, hamcrest, lombok
+//      - написать тесты к проекту
 
         Cites cites = new Cites();
 
