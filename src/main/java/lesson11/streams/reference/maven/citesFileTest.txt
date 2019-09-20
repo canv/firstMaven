@@ -1,0 +1,7 @@
+City:TestCity1,Class:Street,ID:1ac301e9-c16a-4873-805c-a890baa93970,Name:TestStreet1,Length:47,Width:20,
+City:TestCity1,Class:Park,ID:9283e54c-8019-486e-9a31-d2e389b90a6a,Name:TestPark1,Length:3,Width:77,
+City:TestCity1,Class:District,ID:87999293-e886-495a-812c-acd44e0f1b89,Name:TestDistrict1,Length:13,Width:55,
+
+City:TestCity2,Class:Street,ID:3c4233c7-202c-4159-85a3-b691ecfb6a68,Name:TestStreet2,Length:38,Width:24,
+City:TestCity2,Class:Park,ID:75cbe603-46a3-40f2-a1de-4085d4b995a5,Name:TestPark2,Length:69,Width:19,
+City:TestCity2,Class:District,ID:8e3705ab-bef1-425e-ac33-3c39bd81b0e6,Name:TestDistrict1,Length:11,Width:84,
