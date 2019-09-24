@@ -10,4 +10,5 @@ import java.lang.annotation.Target;
 public @interface TestMethod {
     int order() default 0;
    // TestMethod(int order){this.order()=order()}
+
 }
