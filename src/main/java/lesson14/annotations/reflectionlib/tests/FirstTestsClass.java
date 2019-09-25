@@ -3,19 +3,19 @@ package lesson14.annotations.reflectionlib.tests;
 import lesson14.annotations.reflectionlib.TestClass;
 import lesson14.annotations.reflectionlib.TestMethod;
 
-@TestClass
+@TestClass(1)
 public class FirstTestsClass {
 
     public void thirdTest(){
-        System.out.println("First class - third test");
+        System.out.println("(1.3)First class - third test");
     }
 
     public void secondTest(){
-        System.out.println("First class - second test");
+        System.out.println("(1.2)First class - second test");
     }
 
-    @TestMethod(order = 1)
+    @TestMethod(1)
     public void firstTest(){
-        System.out.println("First class - first test");
+        System.out.println("(1.1)First class - first test");
     }
 }
