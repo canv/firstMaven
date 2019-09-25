@@ -8,7 +8,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TestMethod {
-    int order() default 0;
-   // TestMethod(int order){this.order()=order()}
-
+    int value() default 0;
 }
