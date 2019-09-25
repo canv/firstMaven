@@ -23,8 +23,6 @@ public class Lesson14 {
 
         for (Class<?> sortedClass : sortedClasses) {
             List<Method> sortedMethods = new ArrayList<>();
-            Constructor<?> constructor = sortedClass.getConstructor(null);
-            Object possibleTestMethods = constructor.newInstance();
 
             for (Method method : sortedClass.getMethods()) {
                 if (method.isAnnotationPresent(TestMethod.class)) {
@@ -32,8 +30,9 @@ public class Lesson14 {
                 }
             }
 
+            Constructor<?> constructor = sortedClass.getConstructor(null);
+            Object possibleTestMethods = constructor.newInstance();
             sortedMethods.sort(Comparator.comparingInt(m -> m.getAnnotation(TestMethod.class).value()));
-
             for (Method setMethod : sortedMethods) {
                 setMethod.invoke(possibleTestMethods);
             }
