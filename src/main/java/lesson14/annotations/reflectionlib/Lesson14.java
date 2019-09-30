@@ -22,19 +22,19 @@ public class Lesson14 {
         sortedClasses.sort(Comparator.comparingInt(m -> m.getAnnotation(TestClass.class).value()));
 
         for (Class<?> sortedClass : sortedClasses) {
-            List<Method> sortedMethods = new ArrayList<>();
+            Map<Integer, Method> sortedMethods = new TreeMap<>();
 
             for (Method method : sortedClass.getMethods()) {
                 if (method.isAnnotationPresent(TestMethod.class)) {
-                    sortedMethods.add(method);
+                    sortedMethods.put(method.getAnnotation(TestMethod.class).value(),method);
                 }
             }
 
-            Constructor<?> constructor = sortedClass.getConstructor(null);
+            Constructor<?> constructor = sortedClass.getConstructor((Class<?>[]) null);
             Object possibleTestMethods = constructor.newInstance();
-            sortedMethods.sort(Comparator.comparingInt(m -> m.getAnnotation(TestMethod.class).value()));
-            for (Method setMethod : sortedMethods) {
-                setMethod.invoke(possibleTestMethods);
+
+            for (Method value : sortedMethods.values()) {
+                value.invoke(possibleTestMethods);
             }
         }
     }
